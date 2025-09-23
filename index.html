@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gauss-Jacobi Iteration Solver</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="math-symbol symbol-1">∇</div>
+        <div class="math-symbol symbol-2">∫</div>
+        <div class="math-symbol symbol-3">∑</div>
+        <div class="math-symbol symbol-4">π</div>
+        <div class="math-symbol symbol-5">λ</div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo-section">
+                <div class="college-logo-placeholder">
+                    <img src="your-college-logo.png" alt="College Logo" class="college-logo" onerror="this.style.display='none';">
+                    <div class="logo-text"></div>
+                </div>
+                <div class="institution-info">
+                    <h3>School of Advanced Sciences and Languages (SASL)</h3>
+                    <p>Faculty Coordinator - Dr. Anupam Sen</p>
+                    <p class="project-credits">Project developed by: Akash Kumar Pandey, Mayank Rawat, Deepika, Paree Khatri, Aryaman Jha</p>
+                </div>
+            </div>
+            
+            <div class="header-main fade-in">
+                <h1 class="title-animation">Gauss-Jacobi Iteration Solver</h1>
+                <p class="subtitle">Solve 4×4 Linear Systems with Precision</p>
+                <div class="formula-display">
+                    <div class="formula-container">
+                        <div class="formula-equation">
+                            <span class="var">x₁</span><span class="superscript">(k+1)</span> = 
+                            <span class="fraction-inline">
+                                <span class="numerator">1</span>
+                                <span class="denominator">a₁₁</span>
+                            </span>
+                            <span class="bracket">[</span>b₁ - (a₁₂x₂<span class="superscript">(k)</span> + a₁₃x₃<span class="superscript">(k)</span> + a₁₄x₄<span class="superscript">(k)</span>)<span class="bracket">]</span>
+                        </div>
+                        
+                        <div class="formula-equation">
+                            <span class="var">x₂</span><span class="superscript">(k+1)</span> = 
+                            <span class="fraction-inline">
+                                <span class="numerator">1</span>
+                                <span class="denominator">a₂₂</span>
+                            </span>
+                            <span class="bracket">[</span>b₂ - (a₂₁x₁<span class="superscript">(k)</span> + a₂₃x₃<span class="superscript">(k)</span> + a₂₄x₄<span class="superscript">(k)</span>)<span class="bracket">]</span>
+                        </div>
+                        
+                        <div class="formula-equation">
+                            <span class="var">x₃</span><span class="superscript">(k+1)</span> = 
+                            <span class="fraction-inline">
+                                <span class="numerator">1</span>
+                                <span class="denominator">a₃₃</span>
+                            </span>
+                            <span class="bracket">[</span>b₃ - (a₃₁x₁<span class="superscript">(k)</span> + a₃₂x₂<span class="superscript">(k)</span> + a₃₄x₄<span class="superscript">(k)</span>)<span class="bracket">]</span>
+                        </div>
+                        
+                        <div class="formula-equation">
+                            <span class="var">x₄</span><span class="superscript">(k+1)</span> = 
+                            <span class="fraction-inline">
+                                <span class="numerator">1</span>
+                                <span class="denominator">a₄₄</span>
+                            </span>
+                            <span class="bracket">[</span>b₄ - (a₄₁x₁<span class="superscript">(k)</span> + a₄₂x₂<span class="superscript">(k)</span> + a₄₃x₃<span class="superscript">(k)</span>)<span class="bracket">]</span>
+                        </div>
+                        
+                        <div class="iteration-note">k = 0, 1, 2, ...</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="input-panel slide-in-left">
+                <div class="panel-header">
+                    <h2>Input Parameters</h2>
+                    <p>Enter your 4×4 system coefficients</p>
+                </div>
+
+                <div class="matrix-section">
+                    <h3>Coefficient Matrix [A]</h3>
+                    <div class="matrix-wrapper">
+                        <div class="matrix-bracket">[</div>
+                        <div class="matrix-grid">
+                            <input type="number" id="a11" class="matrix-input diagonal" placeholder="a₁₁" step="any">
+                            <input type="number" id="a12" class="matrix-input" placeholder="a₁₂" step="any">
+                            <input type="number" id="a13" class="matrix-input" placeholder="a₁₃" step="any">
+                            <input type="number" id="a14" class="matrix-input" placeholder="a₁₄" step="any">
+                            <input type="number" id="a21" class="matrix-input" placeholder="a₂₁" step="any">
+                            <input type="number" id="a22" class="matrix-input diagonal" placeholder="a₂₂" step="any">
+                            <input type="number" id="a23" class="matrix-input" placeholder="a₂₃" step="any">
+                            <input type="number" id="a24" class="matrix-input" placeholder="a₂₄" step="any">
+                            <input type="number" id="a31" class="matrix-input" placeholder="a₃₁" step="any">
+                            <input type="number" id="a32" class="matrix-input" placeholder="a₃₂" step="any">
+                            <input type="number" id="a33" class="matrix-input diagonal" placeholder="a₃₃" step="any">
+                            <input type="number" id="a34" class="matrix-input" placeholder="a₃₄" step="any">
+                            <input type="number" id="a41" class="matrix-input" placeholder="a₄₁" step="any">
+                            <input type="number" id="a42" class="matrix-input" placeholder="a₄₂" step="any">
+                            <input type="number" id="a43" class="matrix-input" placeholder="a₄₃" step="any">
+                            <input type="number" id="a44" class="matrix-input diagonal" placeholder="a₄₄" step="any">
+                        </div>
+                        <div class="matrix-bracket">]</div>
+                    </div>
+                </div>
+
+                <div class="vector-section">
+                    <h3>Constants Vector [b]</h3>
+                    <div class="vector-wrapper">
+                        <div class="matrix-bracket">[</div>
+                        <div class="vector-grid">
+                            <input type="number" id="b1" class="vector-input" placeholder="b₁" step="any">
+                            <input type="number" id="b2" class="vector-input" placeholder="b₂" step="any">
+                            <input type="number" id="b3" class="vector-input" placeholder="b₃" step="any">
+                            <input type="number" id="b4" class="vector-input" placeholder="b₄" step="any">
+                        </div>
+                        <div class="matrix-bracket">]</div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>Computation Settings</h3>
+                    <div class="settings-grid">
+                        <div class="setting-group">
+                            <label>Maximum Iterations (k)</label>
+                            <input type="number" id="max-iter" value="25" min="1" max="100" class="setting-input">
+                        </div>
+                        <div class="setting-group">
+                            <label>Decimal Places</label>
+                            <select id="decimal-places" class="setting-input">
+                                <option value="4">4 decimal places</option>
+                                <option value="6" selected>6 decimal places</option>
+                                <option value="8">8 decimal places</option>
+                                <option value="10">10 decimal places</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-section">
+                    <button onclick="loadExample()" class="btn btn-secondary pulse-hover">Load Example</button>
+                    <button onclick="solve()" class="btn btn-primary solve-btn">Solve System</button>
+                    <button onclick="clearAll()" class="btn btn-secondary">Clear All</button>
+                </div>
+            </div>
+
+            <div class="output-panel slide-in-right">
+                <div class="panel-header">
+                    <h2>Solution Results</h2>
+                    <p>Step-by-step Gauss-Jacobi iterations</p>
+                </div>
+
+                <div class="result-section">
+                    <h3>Final Solution Vector [x]</h3>
+                    <div id="result" class="result-display"></div>
+                </div>
+
+                <div class="iteration-section">
+                    <h3>Iteration Steps</h3>
+                    <div id="iterations" class="iteration-display"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER SECTION WITH PORTFOLIO LINK -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>For more projects and portfolio, visit: 
+                    <a href="https://a4kashhh.github.io/FinalPortfolio/" target="_blank" class="portfolio-link">
+                        a4kashhh.github.io/FinalPortfolio
+                    </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
