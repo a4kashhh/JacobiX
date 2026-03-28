@@ -101,7 +101,7 @@ MathsFinal/
 ├── index.html              # User Interface
 ├── style.css               # Styling
 ├── script.js               # Jacobi logic implementation
-├── your-college-logo.png   # College branding
+├── vitb.png                # College branding
 └── README.md               # Documentation
 ```
 
